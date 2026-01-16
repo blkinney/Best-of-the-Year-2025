@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best of 2025 | Company Picks</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Password Gate Modal -->
+  <div id="password-modal" class="modal">
+    <div class="modal-content password-modal-content">
+      <div class="modal-header">
+        <h1>Best of <span class="year">2025</span></h1>
+        <p class="tagline">Company Favorites</p>
+      </div>
+      <form id="password-form">
+        <label for="password-input">Enter the password to continue</label>
+        <input type="password" id="password-input" placeholder="Password" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Enter</button>
+        <p id="password-error" class="error-text"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal" style="display: none;">
+    <div class="modal-content success-modal-content">
+      <div class="success-icon">✓</div>
+      <h2>Rankings Submitted!</h2>
+      <p>Thanks for sharing your top picks.</p>
+      <button class="btn btn-primary" onclick="closeSuccessModal()">Done</button>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="hidden">
+    <header>
+      <div class="header-content">
+        <h1>Best of <span class="year">2025</span></h1>
+        <p class="subtitle">Rank your top 3 movies, TV shows, and video games of the year</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- Instructions -->
+      <section class="instructions-section">
+        <h3>How to Vote</h3>
+        <ol class="instructions-list">
+          <li><strong>Enter your name</strong> so we know who's voting</li>
+          <li><strong>Search</strong> for your favorite 2025 releases in each category</li>
+          <li><strong>Click to add</strong> picks to your rankings (up to 3 per category)</li>
+          <li><strong>Reorder</strong> your picks using the arrow buttons if needed</li>
+          <li><strong>Submit</strong> when you're ready — you can skip categories if you want!</li>
+        </ol>
+      </section>
+      <!-- Voter Info -->
+      <section class="voter-section">
+        <label for="voter-name">Your Name</label>
+        <input type="text" id="voter-name" placeholder="Enter your name" required>
+      </section>
+
+      <!-- Movie Section -->
+      <section class="category-section" data-category="movie">
+        <div class="category-header">
+          <span class="category-icon">🎬</span>
+          <h2>Top 3 Movies</h2>
+        </div>
+        <div class="ranked-list" id="movie-ranked"></div>
+        <div class="search-container">
+          <input type="text" class="search-input" id="movie-search" placeholder="Search for a movie released in 2025...">
+          <div class="search-loading" id="movie-loading"></div>
+        </div>
+        <div class="results-grid" id="movie-results"></div>
+      </section>
+
+      <!-- TV Show Section -->
+      <section class="category-section" data-category="tv">
+        <div class="category-header">
+          <span class="category-icon">📺</span>
+          <h2>Top 3 TV Shows</h2>
+        </div>
+        <div class="ranked-list" id="tv-ranked"></div>
+        <div class="search-container">
+          <input type="text" class="search-input" id="tv-search" placeholder="Search for a TV show with 2025 episodes...">
+          <div class="search-loading" id="tv-loading"></div>
+        </div>
+        <div class="results-grid" id="tv-results"></div>
+      </section>
+
+      <!-- Video Game Section -->
+      <section class="category-section" data-category="game">
+        <div class="category-header">
+          <span class="category-icon">🎮</span>
+          <h2>Top 3 Video Games</h2>
+        </div>
+        <div class="ranked-list" id="game-ranked"></div>
+        <div class="search-container">
+          <input type="text" class="search-input" id="game-search" placeholder="Search for a game, DLC, or expansion...">
+          <div class="search-loading" id="game-loading"></div>
+        </div>
+        <div class="results-grid" id="game-results"></div>
+      </section>
+
+      <!-- Submit Section -->
+      <section class="submit-section">
+        <button id="submit-btn" class="btn btn-submit" disabled>
+          <span class="btn-text">Submit Your Rankings</span>
+          <span class="btn-loading">Submitting...</span>
+        </button>
+        <p class="submit-hint">Select at least one pick from any category</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Best of 2025 • Ranked Choice Edition</p>
+    </footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
