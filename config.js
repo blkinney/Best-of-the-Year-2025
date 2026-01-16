@@ -13,7 +13,7 @@ const CONFIG = {
   
   // Site password - Share this with your company
   // This is hashed client-side (SHA-256) for basic obfuscation
-  SITE_PASSWORD: 'linearBest2025',
+  SITE_PASSWORD: 'friendsBest2025',
   
   // API Base URLs
   TMDB_BASE_URL: 'https://api.themoviedb.org/3',
