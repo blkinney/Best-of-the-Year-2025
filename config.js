@@ -9,7 +9,7 @@ const CONFIG = {
   
   // Google Sheets Apps Script Web App URL
   // Follow README instructions to set this up
-  GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbzVvkQclwOQ2datQUpbhPIV7aRUptrYL4mzYhr-hL_OOmnJoqKaCUTg7f_gKzFfxxKr/exec',
+  GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbwhuol05QKlfht3SEE00jIC024jjz0CIOOdYT48b6lI4OTVGcbCwIt-UTi09bcl92Ny/exec',
   
   // Site password - Share this with your company
   // This is hashed client-side (SHA-256) for basic obfuscation
