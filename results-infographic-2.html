@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best of 2025 Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #FFD700;
+      --silver: #C0C0C0;
+      --bronze: #CD7F32;
+      --movie-color: #E50914;
+      --tv-color: #9D4EDD;
+      --game-color: #00D26A;
+      --bg-dark: #0a0a0c;
+      --bg-card: #1a1a1f;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 40px 20px;
+      background-image: 
+        radial-gradient(ellipse at top, rgba(229, 9, 20, 0.15), transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(157, 78, 221, 0.1), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(0, 210, 106, 0.1), transparent 50%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .header::before {
+      content: "🎬 📺 🎮";
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      letter-spacing: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 6rem);
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, var(--movie-color), var(--tv-color), var(--game-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .header .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-top: 10px;
+    }
+
+    .header .voters {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      font-size: 0.9rem;
+    }
+
+    /* Winners Section */
+    .winners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .winners-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .winner-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .winner-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .winner-card.movie::before { background: var(--movie-color); }
+    .winner-card.tv::before { background: var(--tv-color); }
+    .winner-card.game::before { background: var(--game-color); }
+
+    .winner-card .category-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .winner-card .category-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .winner-card.movie .category-label { color: var(--movie-color); }
+    .winner-card.tv .category-label { color: var(--tv-color); }
+    .winner-card.game .category-label { color: var(--game-color); }
+
+    .podium-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .podium-item:last-child {
+      border-bottom: none;
+    }
+
+    .podium-rank {
+      font-size: 1.5rem;
+      width: 35px;
+      text-align: center;
+    }
+
+    .podium-item.first .podium-rank { color: var(--gold); }
+    .podium-item.second .podium-rank { color: var(--silver); }
+    .podium-item.third .podium-rank { color: var(--bronze); }
+
+    .podium-title {
+      flex: 1;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .podium-item.first .podium-title {
+      font-size: 1.1rem;
+    }
+
+    .podium-points {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* Fun Categories */
+    .fun-section {
+      margin-top: 50px;
+    }
+
+    .fun-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .fun-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .fun-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fun-card {
+      background: var(--bg-card);
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .fun-card.highlight {
+      background: linear-gradient(135deg, rgba(255,215,0,0.1), var(--bg-card));
+      border: 1px solid rgba(255,215,0,0.3);
+    }
+
+    .fun-card .emoji {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .fun-card .content h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: var(--gold);
+    }
+
+    .fun-card .content .winner-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 3px;
+    }
+
+    .fun-card .content .description {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Special Sections */
+    .special-section {
+      margin-top: 40px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .special-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .special-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .special-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .special-category {
+      font-size: 0.85rem;
+    }
+
+    .special-category .label {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .special-category.movie .label { color: var(--movie-color); }
+    .special-category.tv .label { color: var(--tv-color); }
+    .special-category.game .label { color: var(--game-color); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag-item {
+      background: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    /* Stats Banner */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+      .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-card .number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--movie-color), var(--tv-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer .company {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+    }
+
+    /* Trophy highlight for first place */
+    .winner-card .podium-item.first {
+      background: linear-gradient(90deg, rgba(255,215,0,0.1), transparent);
+      margin: 0 -25px;
+      padding: 10px 25px;
+      border-radius: 0;
+    }
+
+    /* Club section */
+    .club-section {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .club-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .club-card {
+      background: var(--bg-card);
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .club-card h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .club-card .members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .club-card .member {
+      background: rgba(255,255,255,0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .club-card.sinners h4 { color: var(--movie-color); }
+    .club-card.clair h4 { color: var(--game-color); }
+    .club-card.pluribus h4 { color: var(--tv-color); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>BEST OF 2025</h1>
+      <p class="subtitle">The People Have Spoken</p>
+      <div class="voters">22 Voters • Ranked Choice</div>
+    </header>
+
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+      <div class="stat-card">
+        <div class="number">22</div>
+        <div class="label">Total Voters</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">67</div>
+        <div class="label">Unique Movies</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">48</div>
+        <div class="label">Unique TV Shows</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">41</div>
+        <div class="label">Unique Games</div>
+      </div>
+    </div>
+
+    <!-- Winners -->
+    <div class="winners-grid">
+      <!-- Movies -->
+      <div class="winner-card movie">
+        <div class="category-icon">🎬</div>
+        <div class="category-label">Best Movie</div>
+        <div class="podium-item first">
+          <span class="podium-rank">🥇</span>
+          <span class="podium-title">Sinners</span>
+          <span class="podium-points">15 pts</span>
+        </div>
+        <div class="podium-item second">
+          <span class="podium-rank">🥈</span>
+          <span class="podium-title">Frankenstein</span>
+          <span class="podium-points">8 pts</span>
+        </div>
+        <div class="podium-item third">
+          <span class="podium-rank">🥉</span>
+          <span class="podium-title">Weapons</span>
+          <span class="podium-points">7 pts</span>
+        </div>
+      </div>
+
+      <!-- TV -->
+      <div class="winner-card tv">
+        <div class="category-icon">📺</div>
+        <div class="category-label">Best TV Show</div>
+        <div class="podium-item first">
+          <span class="podium-rank">🥇</span>
+          <span class="podium-title">Pluribus</span>
+          <span class="podium-points">19 pts</span>
+        </div>
+        <div class="podium-item second">
+          <span class="podium-rank">🥈</span>
+          <span class="podium-title">Dexter: Resurrection</span>
+          <span class="podium-points">8 pts</span>
+        </div>
+        <div class="podium-item third">
+          <span class="podium-rank">🥉</span>
+          <span class="podium-title">Andor / Stranger Things / Severance</span>
+          <span class="podium-points">6 pts</span>
+        </div>
+      </div>
+
+      <!-- Games -->
+      <div class="winner-card game">
+        <div class="category-icon">🎮</div>
+        <div class="category-label">Best Video Game</div>
+        <div class="podium-item first">
+          <span class="podium-rank">🥇</span>
+          <span class="podium-title">Clair Obscur: Expedition 33</span>
+          <span class="podium-points">16 pts</span>
+        </div>
+        <div class="podium-item second">
+          <span class="podium-rank">🥈</span>
+          <span class="podium-title">Hades II</span>
+          <span class="podium-points">10 pts</span>
+        </div>
+        <div class="podium-item third">
+          <span class="podium-rank">🥉</span>
+          <span class="podium-title">Hollow Knight: Silksong</span>
+          <span class="podium-points">8 pts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winner Clubs -->
+    <div class="club-section">
+      <div class="club-card sinners">
+        <h4>🎬 The Sinners Club — 5 First-Place Votes</h4>
+        <div class="members">
+          <span class="member">Ben Kinney</span>
+          <span class="member">SideEffect</span>
+          <span class="member">MattAg</span>
+          <span class="member">Evan Stenmark</span>
+          <span class="member">Michele</span>
+        </div>
+      </div>
+      <div class="club-card clair">
+        <h4>🎮 The Clair Obscur Club — 5 First-Place Votes</h4>
+        <div class="members">
+          <span class="member">Matt Greco</span>
+          <span class="member">MattAg</span>
+          <span class="member">Andrew</span>
+          <span class="member">Tien</span>
+          <span class="member">Shiranui</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fun Categories -->
+    <section class="fun-section">
+      <h2>🏆 AWARDS & SUPERLATIVES</h2>
+      
+      <div class="fun-grid">
+        <div class="fun-card highlight">
+          <span class="emoji">💍</span>
+          <div class="content">
+            <h3>"Always The Bridesmaid"</h3>
+            <div class="winner-name">Dexter: Resurrection</div>
+            <div class="description">8 points from 4 voters, but ZERO first-place votes. Everyone's backup plan!</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">⏰</span>
+          <div class="content">
+            <h3>"The Time Traveler"</h3>
+            <div class="winner-name">Chase Henderson</div>
+            <div class="description">Voted for Morrowind (2002) — a 23-year-old game! The elder scrolls indeed.</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🔮</span>
+          <div class="content">
+            <h3>"The Oracle"</h3>
+            <div class="winner-name">Ben Kinney</div>
+            <div class="description">Voted for all 3 category winners (Sinners, Pluribus, Clair Obscur)</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🎌</span>
+          <div class="content">
+            <h3>"The Anime Fan"</h3>
+            <div class="winner-name">Shiranui & Tien</div>
+            <div class="description">Demon Slayer, Chainsaw Man, Apothecary Diaries, Dan Da Dan — weeb excellence</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🎪</span>
+          <div class="content">
+            <h3>"The Family Friendly"</h3>
+            <div class="winner-name">Alyssa Brown</div>
+            <div class="description">Gabby's Dollhouse, Elio, Lilo & Stitch, Disney Dreamlight Valley — peak wholesome</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🇬🇧</span>
+          <div class="content">
+            <h3>"The British Procedural Fans"</h3>
+            <div class="winner-name">Mike Kinney & Louise</div>
+            <div class="description">Thursday Murder Club, Shetland, Death in Paradise, Murdoch Mysteries — cozy crime!</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">😂</span>
+          <div class="content">
+            <h3>"The Comedy Connoisseur"</h3>
+            <div class="winner-name">Jenn</div>
+            <div class="description">The Running Man, Happy Gilmore 2, Chad Powers — laughs over drama!</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">👻</span>
+          <div class="content">
+            <h3>"The Horror Hound"</h3>
+            <div class="winner-name">Michele</div>
+            <div class="description">Silent Hill f + Alien: Earth — ready for nightmares</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">⚔️</span>
+          <div class="content">
+            <h3>"The Action Hero"</h3>
+            <div class="winner-name">Vic</div>
+            <div class="description">Wake Up Dead Man, Weapons, Warfare, Wildgate — loves things that go boom</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🌟</span>
+          <div class="content">
+            <h3>"The Indie Darling"</h3>
+            <div class="winner-name">Kara</div>
+            <div class="description">Only vote for Wicked: For Good — musical theater representation!</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🧟</span>
+          <div class="content">
+            <h3>"The Monster Mash"</h3>
+            <div class="winner-name">Alison Sidwell & Evan</div>
+            <div class="description">Both picked Frankenstein as their #1 movie — classic horror revivalists</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🎯</span>
+          <div class="content">
+            <h3>"The Focused Gamer"</h3>
+            <div class="winner-name">Goddard</div>
+            <div class="description">Only voted for games. Movies and TV? Never heard of 'em.</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">✍️</span>
+          <div class="content">
+            <h3>"The Completionists"</h3>
+            <div class="winner-name">9 voters filled all 9 slots!</div>
+            <div class="description">Ben, SideEffect, Evan, Tyler, Alyssa, MattAg, Tien, Andrew, Shiranui</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🤫</span>
+          <div class="content">
+            <h3>"The Minimalist"</h3>
+            <div class="winner-name">Allison Santana</div>
+            <div class="description">Only 2 votes total (Zootopia 2, Foundation). Quality over quantity!</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">🎮</span>
+          <div class="content">
+            <h3>"The Gaming Skeptics"</h3>
+            <div class="winner-name">Kyle, Mike Kinney, Louise</div>
+            <div class="description">Skipped video games entirely. Touching grass confirmed.</div>
+          </div>
+        </div>
+
+        <div class="fun-card">
+          <span class="emoji">👾</span>
+          <div class="content">
+            <h3>"The Retro Gamers"</h3>
+            <div class="winner-name">Evan Stenmark</div>
+            <div class="description">RimWorld (2016), Dwarf Fortress (2006) — appreciates the classics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loner Section -->
+    <section class="special-section">
+      <h3>🕯️ "The Loners" — Only One Vote Each (Selected Highlights)</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 15px;">A single champion believed in these picks</p>
+      
+      <div class="special-grid">
+        <div class="special-category movie">
+          <div class="label">🎬 Movies</div>
+          <div class="tag-list">
+            <span class="tag-item">TRON: Ares</span>
+            <span class="tag-item">Gabby's Dollhouse: The Movie</span>
+            <span class="tag-item">Zootopia 2</span>
+            <span class="tag-item">Good Fortune</span>
+            <span class="tag-item">The Running Man</span>
+            <span class="tag-item">KPop Demon Hunters</span>
+            <span class="tag-item">Wicked: For Good</span>
+          </div>
+        </div>
+        
+        <div class="special-category tv">
+          <div class="label">📺 TV Shows</div>
+          <div class="tag-list">
+            <span class="tag-item">The Studio</span>
+            <span class="tag-item">Chad Powers</span>
+            <span class="tag-item">Silo</span>
+            <span class="tag-item">Solo Leveling</span>
+            <span class="tag-item">The Pitt</span>
+            <span class="tag-item">Alien: Earth</span>
+            <span class="tag-item">Shetland</span>
+            <span class="tag-item">Murdoch Mysteries</span>
+          </div>
+        </div>
+        
+        <div class="special-category game">
+          <div class="label">🎮 Games</div>
+          <div class="tag-list">
+            <span class="tag-item">The Bazaar</span>
+            <span class="tag-item">Ghost of Yotei</span>
+            <span class="tag-item">Dune: Awakening</span>
+            <span class="tag-item">Disney Dreamlight Valley</span>
+            <span class="tag-item">Wildgate</span>
+            <span class="tag-item">Mario Kart World</span>
+            <span class="tag-item">Morrowind (!)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Anticipated -->
+    <section class="special-section" style="margin-top: 20px;">
+      <h3>🔥 The Waiting Game — Most Anticipated (4+ votes)</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 15px;">These titles had fans counting down the days</p>
+      
+      <div class="tag-list" style="justify-content: center;">
+        <span class="tag-item" style="background: rgba(229, 9, 20, 0.3);">Sinners (5 voters)</span>
+        <span class="tag-item" style="background: rgba(157, 78, 221, 0.3);">Pluribus (7 voters)</span>
+        <span class="tag-item" style="background: rgba(0, 210, 106, 0.3);">Clair Obscur (6 voters)</span>
+        <span class="tag-item" style="background: rgba(0, 210, 106, 0.3);">Hades II (5 voters)</span>
+        <span class="tag-item" style="background: rgba(0, 210, 106, 0.3);">Hollow Knight: Silksong (4 voters)</span>
+        <span class="tag-item" style="background: rgba(157, 78, 221, 0.3);">Dexter: Resurrection (4 voters)</span>
+        <span class="tag-item" style="background: rgba(229, 9, 20, 0.3);">Weapons (4 voters)</span>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="company">LINEAR</div>
+      <p>Best of 2025 • 22 Voters • Ranked Choice Voting</p>
+      <p style="margin-top: 10px; font-size: 0.8rem;">3 pts for 1st • 2 pts for 2nd • 1 pt for 3rd</p>
+    </footer>
+  </div>
+</body>
+</html>
